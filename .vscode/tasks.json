@@ -8,6 +8,41 @@
             "type": "shell",
             "command": "${fileWorkspaceFolder}/vendor/bin/php-cs-fixer fix --config=${fileWorkspaceFolder}/.php-cs-fixer.dist.php --verbose --diff --using-cache=yes ${file}",
             "problemMatcher": []
+        },
+        {
+            "label": "git-flow",
+            "type": "shell",
+            "command": "git flow ${input:gitFlowCommand} ${input:gitFlowOptions} ${input:gitFlowBranchName}",
+            "problemMatcher": []
+        }
+    ],
+    "inputs":[
+        {
+            "type": "pickString",
+            "id": "gitFlowCommand",
+            "description": "git flow xxx",
+            "options":[
+                "feature",
+                "release",
+                "hotfix",
+            ],
+            "default": "feature"
+        },
+        {
+            "type": "pickString",
+            "id": "gitFlowOptions",
+            "description": "git flow xxx start/finish/publish",
+            "options":[
+                "start",
+                "finish",
+                "publish",
+            ]
+        },
+        {
+            "type": "promptString",
+            "id": "gitFlowBranchName",
+            "description" : "git flow branch name"
         }
     ]
+
 }
